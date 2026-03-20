@@ -1,4 +1,3 @@
-# dominio/sub_bases/soldado.py
 import random
 from abc import abstractmethod
 from dominio.base.personaje import Personaje

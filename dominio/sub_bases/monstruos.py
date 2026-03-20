@@ -18,7 +18,7 @@ class Monstruo(Personaje):
     def decidir_accion(self, enemigo: Personaje) -> str:
         pass
 
-    # Clase abstracta que se bajó de la base
+    # Implementación de atacar() heredada de Personaje.
     def atacar(self, enemigo: Personaje) -> str:
 
         accion = self.decidir_accion(enemigo) # La variable accion indica el tipo de ataque
@@ -77,7 +77,7 @@ class Orco(Monstruo):
 class JefeOscuro(Monstruo):
     
     def __init__(self):
-        super().__init__("Jefe Oscuro", hp=220,ataque=40, defensa=15, recompensa=60)
+        super().__init__("Jefe Oscuro", hp=220, ataque=40, defensa=15, recompensa=60)
         # Estado interno inicial
         self.__fase = 1
 

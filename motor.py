@@ -4,10 +4,12 @@ from dominio import (
     Guerrero, Ladron, # Los objetos de la sub_base "Soldado"
     Goblin, Orco, JefeOscuro # Los objetos de la sub_base "Monstruo"
 )
-from ui import UI # Import de los métodos para mostrar
+from ui import UI
+
 
 # Motor del juego. Coordina los combates, estados y la progresión.
 class Motor:
+
     def __init__(self):
         self._ui = UI()             # Única instancia de UI
         self._soldado = None        # Asignación al elegir
@@ -32,6 +34,7 @@ class Motor:
                 self._ui.mostrar_ficha(self._soldado)
             elif opcion == "3": # Indica si se sigue jugando
                 self._ejecutando = False
+                return
 
             # Verifica si el soldado sigue vivo
             if not self._soldado.estado:
@@ -95,6 +98,12 @@ class Motor:
             self._ui.mostrar_victoria_combate(
                 self._soldado, monstruo, monstruo.recompensa
             )
+            # isinstance(objeto, Clase) — verifica si "monstruo" es una instancia de JefeOscuro específicamente. Devuelve True si lo es permite detectar el boss final sin preguntar por su nombre.
+            if isinstance(monstruo, JefeOscuro):
+                self._ui.mostrar_victoria_total(
+                    self._soldado, self._oro
+                )
+                self._ejecutando = False
         else:
             self._ui.mostrar_derrota_combate(self._soldado, monstruo)
 
@@ -103,5 +112,5 @@ class Motor:
         if self._victorias >= 5:
             return JefeOscuro()
         if self._victorias >= 3:
-            return random.choice([Orco, Goblin])()
+            return random.choice([Orco, Goblin])()              # Indica si se sigue jugando
         return Goblin()

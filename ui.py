@@ -1,6 +1,6 @@
-#Única responsable de prints e inputs, el Motor nunca realiza prints directamente.
+# Única responsable de prints e inputs, el Motor nunca realiza prints directamente.
 class UI:
-
+    # Intro del juego
     def mostrar_intro(self) -> None:
         print("\n" + "═" * 45)
         print("           GRIMGAR RPG")
@@ -64,6 +64,15 @@ class UI:
         print("\n" + "═" * 45)
         print("  GAME OVER")
         print(f"  {soldado.nombre} cayó en Grimgar.")
+        print("═" * 45)
+
+    # Pantalla final — solo se muestra al vencer al JefeOscuro
+    def mostrar_victoria_total(self, soldado, oro: int) -> None:
+        print("\n" + "═" * 45)
+        print("  VICTORIA TOTAL")
+        print(f"  {soldado.nombre} derrotó al Jefe Oscuro.")
+        print(f"  Oro acumulado: {oro}")
+        print(f"  Victorias: {soldado.victorias}")
         print("═" * 45)
 
     # Inputs y utilidades
