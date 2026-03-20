@@ -1,0 +1,1 @@
+from dominio.base.personaje import Personaje
